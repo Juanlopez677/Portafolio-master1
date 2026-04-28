@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Juan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+            margin: 0;
+            font-family: "Barlow Condensed", sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* NAV */
+        nav{
+            background-color: rgb(30, 101, 51);
+            display: flex;
+            justify-content: center;
+            padding: 25px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        ul{
+            padding-left: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        nav a{
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover{
+            color: black;
+        }
+
+        /* HOME (PORTADA) */
+        .Home{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 80vh;
+        }
+
+        .Home p{
+            font-size: 32px;
+        }
+
+        .nombre{
+            color: rgb(159, 15, 15);
+            font-weight: 700;
+        }
+
+        /* BOTÓN */
+        .boton{
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: 2px solid black;
+            background-color: transparent;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .boton:hover{
+            background-color: black;
+            color: white;
+        }
+
+        /* SECCIONES NORMALES */
+        section{
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2{
+            border-bottom: 3px solid rgb(0, 0, 0);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 600px){
+            .Home p{
+                font-size: 24px;
+            }
+
+            /* Aquí mantenemos el menú horizontal */
+            ul{
+                flex-direction: row; /* Asegura que siga horizontal */
+                flex-wrap: wrap;    /* Permite que bajen si no hay espacio */
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav a{
+                font-size: 16px; /* Reducimos un poco el tamaño para que quepan */
+            }
+
+            section{
+                padding: 40px 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="Home">
+        <p>Hello, my name is <span class="nombre">Juan</span> and I am a Developer</p>
+        <a href="#about" class="boton">More about me</a>
+    </section>
+
+    <section id="about">
+        <h2>About me</h2>
+        <p>I am a passionate Junior Frontend Developer dedicated to turning ideas into functional and visually compelling digital experiences.</p>
+        <p>To bring projects to life, I implement JavaScript.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>Proficient in HTML, CSS, JavaScript and GitHub.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <h3>SanValentinCard</h3>
+        <p>A special project created with HTML and CSS.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: juanjoselopezguti14190@gmail.com</p>
+    </section>
+
+</body>
+</html>
