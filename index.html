@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,26 +8,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
+
         html{
             scroll-behavior: smooth;
         }
 
         body{
             margin: 0;
+            padding-top: 90px;
             font-family: "Barlow Condensed", sans-serif;
             background-color: #f4f4f4;
         }
 
         /* NAV */
+
         nav{
             background-color: rgb(30, 101, 51);
             display: flex;
             justify-content: center;
             padding: 25px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 50%;
+            width: 100%;
             z-index: 1000;
+
+            transform: translateX(-50%) scale(1);
+
+            border-radius: 0;
+
+            transition:
+                width 0.5s ease,
+                padding 0.5s ease,
+                border-radius 0.5s ease,
+                top 0.5s ease,
+                transform 0.5s ease,
+                box-shadow 0.5s ease;
+        }
+
+        nav.scrolled{
+            width: 70%;
+            top: 15px;
+
+            transform: translateX(-50%) scale(0.96);
+
+            border-radius: 25px;
+            padding: 16px 0;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
         }
 
         ul{
@@ -45,7 +75,7 @@
         }
 
         nav a{
-            color: rgb(0, 0, 0);
+            color: white;
             text-decoration: none;
             font-size: 20px;
             font-weight: bold;
@@ -56,18 +86,26 @@
             color: black;
         }
 
-        /* HOME (PORTADA) */
+        /* HOME */
+
         .Home{
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            height: 80vh;
+            min-height: 65vh;
+            padding-top: 45px;
+        }
+
+        .home-contenido{
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .Home p{
-            font-size: 32px;
+            font-size: 40px;
+            margin: 0;
+            text-align: center;
         }
 
         .nombre{
@@ -75,7 +113,22 @@
             font-weight: 700;
         }
 
+        /* FOTO */
+
+        .foto{
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .texto{
+            text-align: center;
+        }
+
         /* BOTÓN */
+
         .boton{
             margin-top: 20px;
             padding: 12px 25px;
@@ -93,39 +146,271 @@
             color: white;
         }
 
-        /* SECCIONES NORMALES */
+        /* SECCIONES */
+
         section{
-            padding: 60px 20px;
+            padding: 25px 20px;
             max-width: 900px;
             margin: 0 auto;
         }
-
-        h2{
-            border-bottom: 3px solid rgb(0, 0, 0);
-            display: inline-block;
-            margin-bottom: 20px;
+        
+        .contact-section{
+            max-width: 1150px;
         }
 
-        /* RESPONSIVE */
-        @media screen and (max-width: 600px){
+        h2{
+            border-bottom: 3px solid black;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 40px;
+        }
+
+        section p{
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        /* ABOUT */
+
+        .about-contenido{
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #about{
+            padding-top: 120px;
+        }
+
+        #skills,
+        #projects,
+        #contact{
+            margin-top: 20px;
+        }
+
+        .about-texto{
+            text-align: left;
+        }
+
+        /* SKILLS */
+
+        .skills-galeria{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .skills-card{
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skills-card:hover{
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .skills-card img{
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+        }
+
+        /* PROJECTS */
+
+        .project-card{
+            margin-top: 30px;
+        }
+
+        .project-image{
+            width: 100%;
+            max-width: 800px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-image:hover{
+            transform: scale(1.02);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+        }
+
+        /* CONTACT BOX */
+
+        .contact-box{
+            margin-top: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+            width: 100%;
+        }
+
+        .contact-icons{
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item{
+            color: #1f2d4d;
+            font-size: 50px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .contact-item:hover{
+            transform: translateY(-4px);
+            color: rgb(30, 101, 51);
+        }
+
+        .contact-email{
+            font-size: 25px;
+            color: #333;
+        }
+
+        /* NUEVA BARRA LATERAL */
+
+        .scroll-wrapper{
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            z-index: 999;
+        }
+
+        /* TEXTOS */
+
+        .scroll-sections{
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: flex-end;
+        }
+
+        .scroll-link{
+            text-decoration: none;
+            color: #777;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            letter-spacing: 1px;
+
+            min-width: 110px;
+            text-align: right;
+        }
+
+        .scroll-link:hover{
+            color: rgb(30, 101, 51);
+            transform: translateX(-4px);
+        }
+
+        .scroll-link.active{
+            color: rgb(30, 101, 51);
+            font-size: 20px;
+        }
+
+        /* BARRA */
+
+        .side-scroll{
+            width: 8px;
+            height: 220px;
+            background: #d0d0d0;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-indicator{
+            width: 100%;
+            height: 60px;
+            background: rgb(120,120,120);
+            border-radius: 20px;
+            position: absolute;
+            top: 0;
+            transition: top 0.2s ease;
+        }
+
+        /* SOLO EN PC */
+
+        @media screen and (max-width: 768px){
+
+            .scroll-wrapper{
+                display: none;
+            }
+
+            .Home{
+                min-height: 85vh;
+                padding: 20px 20px 40px;
+            }
+
+            .home-contenido{
+                flex-direction: column;
+                text-align: center;
+            }
+
             .Home p{
                 font-size: 24px;
             }
 
-            /* Aquí mantenemos el menú horizontal */
             ul{
-                flex-direction: row; /* Asegura que siga horizontal */
-                flex-wrap: wrap;    /* Permite que bajen si no hay espacio */
+                flex-wrap: nowrap;
                 justify-content: center;
-                gap: 10px;
+                gap: 12px;
+                width: 100%;
             }
 
             nav a{
-                font-size: 16px; /* Reducimos un poco el tamaño para que quepan */
+                font-size: 12px;
             }
 
             section{
                 padding: 40px 15px;
+            }
+
+            .about-contenido{
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-box{
+                width: 85%;
+                max-width: 400px;
+                padding: 40px 20px;
+            }
+
+            .contact-icons{
+                gap: 25px;
+            }
+
+            .contact-item{
+                font-size: 40px;
+            }
+
+            .contact-email{
+                font-size: 18px;
+                word-break: break-word;
             }
         }
 
@@ -134,7 +419,9 @@
 
 <body>
 
-    <nav>
+    <!-- NAV -->
+
+    <nav id="navbar">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -144,32 +431,225 @@
         </ul>
     </nav>
 
-    <section id="home" class="Home">
-        <p>Hello, my name is <span class="nombre">Juan</span> and I am a Developer</p>
-        <a href="#about" class="boton">More about me</a>
+    <!-- HOME -->
+
+    <section class="Home" id="home">
+        <div class="home-contenido">
+            <div class="texto">
+                <p>
+                    Hello, my name is
+                    <span class="nombre">Juan</span>
+                    and I am a Developer
+                </p>
+
+                <a href="#about" class="boton">
+                    More about me
+                </a>
+            </div>
+        </div>
     </section>
+
+    <!-- ABOUT -->
 
     <section id="about">
-        <h2>About me</h2>
-        <p>I am a passionate Junior Frontend Developer dedicated to turning ideas into functional and visually compelling digital experiences.</p>
-        <p>To bring projects to life, I implement JavaScript.</p>
+
+        <div class="about-contenido">
+
+            <img src="JuanFotoFormal.jpeg"
+            alt="Juan"
+            class="foto">
+
+            <div class="about-texto">
+
+                <h2>About me</h2>
+
+                <p>
+                    I am a passionate Junior Frontend Developer dedicated to turning ideas into functional and visually compelling digital experiences, with a strong focus on building responsive, user-friendly interfaces that provide seamless interaction across devices. I enjoy working with modern web technologies and continuously improving my skills by learning new tools, frameworks, and best practices, while staying detail-oriented and motivated to grow professionally. I am eager to collaborate in team environments where I can contribute, learn, and expand my knowledge, and I use JavaScript along with clean, structured code to ensure performance, accessibility, and scalability in every project I build
+                </p>
+
+            </div>
+
+        </div>
+
     </section>
+
+    <!-- SKILLS -->
 
     <section id="skills">
+
         <h2>Skills</h2>
-        <p>Proficient in HTML, CSS, JavaScript and GitHub.</p>
+
+        <p>
+            Proficient in HTML, CSS, JavaScript, and GitHub, with a solid understanding of creating responsive and accessible web interfaces, using modern layout techniques such as Flexbox and CSS Grid, and implementing dynamic functionality with JavaScript. I am comfortable working with version control through Git and GitHub, which allows efficient collaboration and organization of projects, and I also have knowledge of web performance optimization, cross-browser compatibility, and debugging techniques, while continuously expanding my skill set by exploring new technologies and showing interest in frameworks like React and frontend best practices
+        </p>
+
+        <div class="skills-galeria">
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+            </div>
+
+        </div>
+
     </section>
+
+    <!-- PROJECTS -->
 
     <section id="projects">
+
         <h2>Projects</h2>
-        <h3>SanValentinCard</h3>
-        <p>A special project created with HTML and CSS.</p>
+
+        <div class="project-card">
+
+            <h3>SanValentinCard</h3>
+
+            <p>
+                SanValentinCard is a creative and visually appealing project developed using HTML and CSS, designed to showcase modern frontend design techniques, smooth layouts, responsive structure, and attractive styling focused on user experience. The project was created with attention to detail, combining clean code organization, elegant visual elements, and interactive presentation to deliver a unique digital card experience inspired by Valentine’s Day aesthetics.
+            </p>
+
+            <a href="https://juanlopez677.github.io/SanValentin-realizado--1-/"
+            target="_blank">
+
+                <img src="image.png"
+                alt="Project Image"
+                class="project-image">
+
+            </a>
+
+        </div>
+
     </section>
 
-    <section id="contact">
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact-section">
+
         <h2>Contact</h2>
-        <p>Email: juanjoselopezguti14190@gmail.com</p>
+
+        <div class="contact-box">
+
+            <div class="contact-icons">
+
+                <a href="https://github.com/Juanlopez677"
+                class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="mailto:juanjoselopezguti14190@gmail.com"
+                class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/juan-lopez-236936411/"
+                class="contact-item">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+
+            </div>
+
+            <p class="contact-email">
+                juanjoselopezguti14190@gmail.com
+            </p>
+
+        </div>
+
     </section>
+
+    <!-- BARRA LATERAL -->
+
+    <div class="scroll-wrapper">
+
+        <div class="scroll-sections">
+
+            <a href="#home" class="scroll-link active">01 Home</a>
+
+            <a href="#about" class="scroll-link">02 About</a>
+
+            <a href="#skills" class="scroll-link">03 Skills</a>
+
+            <a href="#projects" class="scroll-link">04 Projects</a>
+
+            <a href="#contact" class="scroll-link">05 Contact</a>
+
+        </div>
+
+        <div class="side-scroll">
+            <div class="scroll-indicator" id="scrollIndicator"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        /* NAVBAR */
+
+        window.addEventListener("scroll", function () {
+
+            const nav = document.getElementById("navbar");
+
+            if (window.scrollY > 50) {
+                nav.classList.add("scrolled");
+            } else {
+                nav.classList.remove("scrolled");
+            }
+
+        });
+
+        /* BARRA SCROLL */
+
+        window.addEventListener("scroll", () => {
+
+            const indicator = document.getElementById("scrollIndicator");
+
+            const scrollTop = window.scrollY;
+
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+
+            const scrollPercent = scrollTop / docHeight;
+
+            const maxMove = 160;
+
+            indicator.style.top = `${scrollPercent * maxMove}px`;
+
+            /* ACTIVAR SECCIONES */
+
+            const sections = document.querySelectorAll("section");
+
+            const links = document.querySelectorAll(".scroll-link");
+
+            let current = "";
+
+            sections.forEach(section => {
+
+                const sectionTop = section.offsetTop - 200;
+
+                if(scrollTop >= sectionTop){
+                    current = section.getAttribute("id");
+                }
+
+            });
+
+            links.forEach(link => {
+
+                link.classList.remove("active");
+
+                if(link.getAttribute("href") === `#${current}`){
+                    link.classList.add("active");
+                }
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
